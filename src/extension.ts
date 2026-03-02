@@ -2,12 +2,12 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { prepareTerminals } from './commands/prepareTerminals';
-import { prepareCommitMessage } from './commands/prepareCommitMessage';
+import { nextTerminal } from './commands/nextTerminal';
 import { prepareStashMessage } from './commands/prepareStashMessage';
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(prepareTerminals);
-	context.subscriptions.push(prepareCommitMessage);
+	context.subscriptions.push(nextTerminal);
 	context.subscriptions.push(prepareStashMessage);
 }
 

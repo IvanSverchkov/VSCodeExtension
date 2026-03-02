@@ -2,7 +2,7 @@
   "name": "x",
   "displayName": "X",
   "description": "Just save your time",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": ">=1.82.0"
   },
@@ -22,19 +22,17 @@
         "title": "X: Prepare stash message"
       },
       {
-        "command": "MyHelpfulExtension.prepareCommitMessage",
-        "title": "X: Prepare commit message"
+        "command": "MyHelpfulExtension.nextTerminal",
+        "title": "X: Select next terminal"
       }
     ]
   },
   "scripts": {
     "build": "npm run compile && vsce package",
     "compile": "tsc -p ./",
-
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
     "watch": "tsc -watch -p ./",
-    
     "vscode:prepublish": "npm run compile",
     "pretest": "npm run compile && npm run lint"
   },
