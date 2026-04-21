@@ -23,7 +23,7 @@ export const runSuperAgent = vscode.commands.registerCommand(
       } catch {
         await vscode.workspace.fs.writeFile(
           stateUri,
-          encoder.encode('# State\n\n')
+          encoder.encode(`# State ${workspaceFolder.uri}\n\n`)
         );
       }
 
@@ -41,15 +41,9 @@ export const runSuperAgent = vscode.commands.registerCommand(
       const preferred = models.find((m: any) => {
         const id = (m.id || m.modelId || '').toString().toLowerCase();
         const name = (m.displayName || m.name || '').toString().toLowerCase();
-        // vscode.window.showInformationMessage(`${id} / ${name}`);
 
-        return (
-          id.includes('mini') ||
-          name.includes('mini')
-        );
+        return id.includes('mini') || name.includes('mini');
       });
-
-      // vscode.window.showInformationMessage(`SELECTED: ${preferred?.id} / ${preferred?.name}`);
 
       const model = preferred ?? models[0];
 

@@ -2,10 +2,11 @@
   "name": "x",
   "displayName": "X",
   "description": "Just save your time",
-  "version": "0.0.10",
+  "version": "0.0.27",
   "engines": {
     "vscode": "^1.110.0"
   },
+  "repository": {},
   "categories": [
     "Other"
   ],
@@ -26,13 +27,17 @@
         "title": "X: Select next terminal"
       },
       {
+        "command": "MyHelpfulExtension.prevTerminal",
+        "title": "X: Select previous terminal"
+      },
+      {
         "command": "MyHelpfulExtension.runSuperAgent",
         "title": "X: Run super agent"
       }
     ]
   },
   "scripts": {
-    "build": "npm run compile && vsce package",
+    "build": "npm version patch --no-git-tag-version && npm run compile && vsce package",
     "compile": "tsc -p ./",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
