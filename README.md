@@ -1,7 +1,7 @@
 # How to build a new version
 
 - Run `npm run build`
-- Type `yes` twice
+- ~~Type `yes` twice~~
 - Done! New `.vsix` file is generated
 
 # How to install

@@ -6,6 +6,7 @@ import { nextTerminal } from './commands/nextTerminal';
 import { prevTerminal } from './commands/nextTerminal';
 import { runSuperAgent } from './commands/runSuperAgent';
 import { prepareStashMessage } from './commands/prepareStashMessage';
+import { startMarkdownPreviewAutoRefresh } from './markdownPreviewAutoRefresh';
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(prepareTerminals);
@@ -13,6 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(prevTerminal);
 	context.subscriptions.push(runSuperAgent);
 	context.subscriptions.push(prepareStashMessage);
+	context.subscriptions.push(startMarkdownPreviewAutoRefresh());
 }
 
 export function deactivate() {}

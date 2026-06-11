@@ -2,7 +2,7 @@
   "name": "x",
   "displayName": "X",
   "description": "Just save your time",
-  "version": "0.0.27",
+  "version": "0.0.30",
   "engines": {
     "vscode": "^1.110.0"
   },
@@ -10,7 +10,9 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
