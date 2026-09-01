@@ -2,7 +2,7 @@
   "name": "x",
   "displayName": "X",
   "description": "Just save your time",
-  "version": "0.0.38",
+  "version": "0.0.40",
   "engines": {
     "vscode": "^1.110.0"
   },
@@ -39,6 +39,10 @@
       {
         "command": "MyHelpfulExtension.runPricingPage",
         "title": "X: Run Pricing page project"
+      },
+      {
+        "command": "MyHelpfulExtension.runPricingPageLinters",
+        "title": "X: Run Pricing page linters"
       }
     ]
   },

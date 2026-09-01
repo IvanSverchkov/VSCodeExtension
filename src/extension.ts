@@ -8,6 +8,7 @@ import { runSuperAgent } from './commands/runSuperAgent';
 import { prepareStashMessage } from './commands/prepareStashMessage';
 import { startMarkdownPreviewAutoRefresh } from './markdownPreviewAutoRefresh';
 import { runPricingPage } from './commands/runPricingPage';
+import { runPricingPageLinters } from './commands/runPricingPageLinters';
 
 export function activate(context: vscode.ExtensionContext) {
 	// Register commands
@@ -17,6 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(runSuperAgent);
 	context.subscriptions.push(prepareStashMessage);
 	context.subscriptions.push(runPricingPage);
+	context.subscriptions.push(runPricingPageLinters);
 	// Enable something else (TODO: Describe this section better)
 	context.subscriptions.push(startMarkdownPreviewAutoRefresh());
 }
