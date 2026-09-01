@@ -1,7 +1,6 @@
 # How to build a new version
 
 - Run `npm run build`
-- ~~Type `yes` twice~~
 - Done! New `.vsix` file is generated
 
 # How to install
@@ -9,6 +8,7 @@
 - Go to the "Extensions" tab
 - Click "..." in the top-right corner
 - Click "Install from VSIX"
+- Click "Restart extensions"
 
 # How to use
 

@@ -7,13 +7,17 @@ import { prevTerminal } from './commands/nextTerminal';
 import { runSuperAgent } from './commands/runSuperAgent';
 import { prepareStashMessage } from './commands/prepareStashMessage';
 import { startMarkdownPreviewAutoRefresh } from './markdownPreviewAutoRefresh';
+import { runPricingPage } from './commands/runPricingPage';
 
 export function activate(context: vscode.ExtensionContext) {
+	// Register commands
 	context.subscriptions.push(prepareTerminals);
 	context.subscriptions.push(nextTerminal);
 	context.subscriptions.push(prevTerminal);
 	context.subscriptions.push(runSuperAgent);
 	context.subscriptions.push(prepareStashMessage);
+	context.subscriptions.push(runPricingPage);
+	// Enable something else (TODO: Describe this section better)
 	context.subscriptions.push(startMarkdownPreviewAutoRefresh());
 }
 
