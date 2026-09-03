@@ -2,7 +2,7 @@
   "name": "x",
   "displayName": "X",
   "description": "Just save your time",
-  "version": "0.0.40",
+  "version": "0.0.41",
   "engines": {
     "vscode": "^1.110.0"
   },

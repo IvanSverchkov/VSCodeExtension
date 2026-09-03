@@ -7,21 +7,25 @@ export const runPricingPageLinters = vscode.commands.registerCommand('MyHelpfulE
   if (vscode.window.activeTerminal) {
     const a1 = vscode.window.createTerminal({
       name: 'uv run pytest',
+      color: new vscode.ThemeColor('terminal.ansiMagenta'),
     });
 
     const a2 = vscode.window.createTerminal({
       name: 'make check_python_code',
       location: { parentTerminal: a1 },
+      color: new vscode.ThemeColor('terminal.ansiMagenta'),
     });
 
     const a3 = vscode.window.createTerminal({
       name: 'pnpm run test',
       location: { parentTerminal: a1 },
+      color: new vscode.ThemeColor('terminal.ansiMagenta'),
     });
 
     const a4 = vscode.window.createTerminal({
       name: 'pnpm run lint',
       location: { parentTerminal: a1 },
+      color: new vscode.ThemeColor('terminal.ansiMagenta'),
     });
 
     setTimeout(() => {

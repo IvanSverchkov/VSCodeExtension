@@ -7,21 +7,25 @@ export const runPricingPage = vscode.commands.registerCommand('MyHelpfulExtensio
   if (vscode.window.activeTerminal) {
     const django = vscode.window.createTerminal({
       name: 'Django',
+      color: new vscode.ThemeColor('terminal.ansiGreen'),
     });
 
     const buildSSRServer = vscode.window.createTerminal({
       name: 'Build SSR server',
       location: { parentTerminal: django },
+      color: new vscode.ThemeColor('terminal.ansiGreen'),
     });
 
     const buildSSRClient = vscode.window.createTerminal({
       name: 'Build SSR client',
       location: { parentTerminal: django },
+      color: new vscode.ThemeColor('terminal.ansiGreen'),
     });
 
     const startSSRServer = vscode.window.createTerminal({
       name: 'Start SSR server',
       location: { parentTerminal: django },
+      color: new vscode.ThemeColor('terminal.ansiGreen'),
     });
 
     setTimeout(() => {
