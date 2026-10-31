@@ -3,11 +3,6 @@ import * as cp from 'child_process';
 
 import { getActiveFolderPath } from '../utils';
 
-// --------------------------------------------------------------------------
-// TODO: Тут есть какой-то баг при котором при первом проходе мы в конце
-// создаем еще один новый терминал, но при последующих новый терминал уже
-// не создается -- стоит поправить
-// --------------------------------------------------------------------------
 const outputChannel = vscode.window.createOutputChannel('My Extension Name');
 
 outputChannel.appendLine(`Initial state`);
