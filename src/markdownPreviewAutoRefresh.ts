@@ -10,6 +10,9 @@ const outputChannel = vscode.window.createOutputChannel('[X] Markdown auto refre
 
 outputChannel.appendLine('Init');
 
+// TODO: Не очень хорошо, что это просто лежит в корне проекта.
+// Нужно перенести это например не в commands, но хотя бы в automation.
+
 export function startMarkdownPreviewAutoRefresh(): vscode.Disposable {
   let isRefreshing = false;
   let hadActiveMarkdownPreview = hasActiveMarkdownPreview();
