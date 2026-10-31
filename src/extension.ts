@@ -6,7 +6,7 @@ import { nextTerminal } from './commands/nextTerminal';
 import { prevTerminal } from './commands/nextTerminal';
 import { runSuperAgent } from './commands/runSuperAgent';
 import { prepareStashMessage } from './commands/prepareStashMessage';
-import { startMarkdownPreviewAutoRefresh } from './markdownPreviewAutoRefresh';
+import { startMarkdownPreviewAutoRefresh } from './automation/markdownPreviewAutoRefresh';
 import { runPricingPage } from './commands/runPricingPage';
 import { runPricingPageLinters } from './commands/runPricingPageLinters';
 
@@ -19,6 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(prepareStashMessage);
 	context.subscriptions.push(runPricingPage);
 	context.subscriptions.push(runPricingPageLinters);
+
 	// Enable something else (TODO: Describe this section better)
 	context.subscriptions.push(startMarkdownPreviewAutoRefresh());
 }
