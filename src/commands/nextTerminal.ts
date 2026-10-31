@@ -15,32 +15,34 @@ outputChannel.appendLine(`Terminals (${vscode.window.terminals.length}): ${vscod
 
 export const nextTerminal = vscode.commands.registerCommand('MyHelpfulExtension.nextTerminal', () => {
   if (vscode.window.activeTerminal) {
+    const visibleTerminals = getVisibleTerminals();
+
     outputChannel.appendLine('---');
     outputChannel.appendLine(`Active: ${vscode.window.activeTerminal.name}`);
-    outputChannel.appendLine(`Terminals (${vscode.window.terminals.length}): ${vscode.window.terminals.map(t => t.name).join(' > ')}`);
+    outputChannel.appendLine(`Terminals (${visibleTerminals.length}): ${visibleTerminals.map(t => t.name).join(' > ')}`);
 
     let isNextTerminal = false;
     
-    for (let i = 0; i < vscode.window.terminals.length; i++) {
-      const terminal = vscode.window.terminals[i];
+    for (let i = 0; i < visibleTerminals.length; i++) {
+      const terminal = visibleTerminals[i];
 
       if (isNextTerminal) {
-        outputChannel.appendLine(`i: ${i}, terminal: ${vscode.window.terminals[i].name} -- show`);
+        outputChannel.appendLine(`i: ${i}, terminal: ${visibleTerminals[i].name} -- show`);
         terminal.show();
         break;
       }
 
-      if (i === vscode.window.terminals.length - 1) {
-        outputChannel.appendLine(`i: ${i}, terminal: ${vscode.window.terminals[i].name} -- last`);
-        vscode.window.terminals[0].show();
+      if (i === visibleTerminals.length - 1) {
+        outputChannel.appendLine(`i: ${i}, terminal: ${visibleTerminals[i].name} -- last`);
+        visibleTerminals[0].show();
         break;
       }
 
       if (terminal === vscode.window.activeTerminal) {
-        outputChannel.appendLine(`i: ${i}, terminal: ${vscode.window.terminals[i].name} -- current`);
+        outputChannel.appendLine(`i: ${i}, terminal: ${visibleTerminals[i].name} -- current`);
         isNextTerminal = true;
       } else {
-        outputChannel.appendLine(`i: ${i}, terminal: ${vscode.window.terminals[i].name} -- not next`);
+        outputChannel.appendLine(`i: ${i}, terminal: ${visibleTerminals[i].name} -- not next`);
       }
     }
   }
@@ -48,33 +50,40 @@ export const nextTerminal = vscode.commands.registerCommand('MyHelpfulExtension.
 
 export const prevTerminal = vscode.commands.registerCommand('MyHelpfulExtension.prevTerminal', () => {
   if (vscode.window.activeTerminal) {
+    const visibleTerminals = getVisibleTerminals();
+
     outputChannel.appendLine('---');
     outputChannel.appendLine(`Active: ${vscode.window.activeTerminal.name}`);
-    outputChannel.appendLine(`Terminals (${vscode.window.terminals.length}): ${vscode.window.terminals.map(t => t.name).join(' > ')}`);
+    outputChannel.appendLine(`Terminals (${visibleTerminals.length}): ${visibleTerminals.map(t => t.name).join(' > ')}`);
 
     let isPrevTerminal = false;
     
-    for (let i = vscode.window.terminals.length - 1; i >= 0; i--) {
-      const terminal = vscode.window.terminals[i];
+    for (let i = visibleTerminals.length - 1; i >= 0; i--) {
+      const terminal = visibleTerminals[i];
 
       if (isPrevTerminal) {
-        outputChannel.appendLine(`i: ${i}, terminal: ${vscode.window.terminals[i].name} -- show`);
+        outputChannel.appendLine(`i: ${i}, terminal: ${visibleTerminals[i].name} -- show`);
         terminal.show();
         break;
       }
 
       if (i === 0) {
-        outputChannel.appendLine(`i: ${i}, terminal: ${vscode.window.terminals[i].name} -- first`);
-        vscode.window.terminals[vscode.window.terminals.length - 1].show();
+        outputChannel.appendLine(`i: ${i}, terminal: ${visibleTerminals[i].name} -- first`);
+        visibleTerminals[visibleTerminals.length - 1].show();
         break;
       }
 
       if (terminal === vscode.window.activeTerminal) {
-        outputChannel.appendLine(`i: ${i}, terminal: ${vscode.window.terminals[i].name} -- current`);
+        outputChannel.appendLine(`i: ${i}, terminal: ${visibleTerminals[i].name} -- current`);
         isPrevTerminal = true;
       } else {
-        outputChannel.appendLine(`i: ${i}, terminal: ${vscode.window.terminals[i].name} -- not prev`);
+        outputChannel.appendLine(`i: ${i}, terminal: ${visibleTerminals[i].name} -- not prev`);
       }
     }
   }
 });
+
+function getVisibleTerminals() {
+  // Note: другие расширения, например GitLab Duo Cards могут создавать свои скрытые терминалы, мы не хотим их использовать.
+  return vscode.window.terminals.filter(terminal => !('hideFromUser' in terminal.creationOptions && terminal.creationOptions.hideFromUser));
+}

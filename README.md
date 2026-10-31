@@ -8,7 +8,7 @@
 - Go to the "Extensions" tab
 - Click "..." in the top-right corner
 - Click "Install from VSIX"
-- Click "Restart extensions"
+- Run `>Developer: Restart Extensions Host`
 
 # How to use
 
